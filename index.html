@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LuxStore — Perfumes, Roupas & Tênis</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon"><i class="fas fa-gem"></i></span>
+        <span class="logo-text">Lux<strong>Store</strong></span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="#inicio" class="nav-link active" data-filter="todos">Início</a>
+        <a href="#catalogo" class="nav-link" data-filter="perfumes">Perfumes</a>
+        <a href="#catalogo" class="nav-link" data-filter="roupas">Roupas</a>
+        <a href="#catalogo" class="nav-link" data-filter="tenis">Tênis</a>
+        <a href="admin.html" class="nav-link nav-admin"><i class="fas fa-cog"></i> Admin</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon" id="searchToggle" title="Buscar">
+          <i class="fas fa-search"></i>
+        </button>
+        <button class="btn-icon" id="cartBtn" title="Carrinho">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+        <button class="btn-icon btn-menu" id="menuToggle" title="Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-bar" id="searchBar">
+      <div class="container">
+        <div class="search-inner">
+          <i class="fas fa-search"></i>
+          <input type="text" id="searchInput" placeholder="Buscar produtos, marcas..."/>
+          <button id="searchClose"><i class="fas fa-times"></i></button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="inicio">
+    <div class="hero-slider" id="heroSlider">
+      <div class="slide slide-1 active">
+        <div class="container slide-content">
+          <p class="slide-tag">Nova Coleção 2026</p>
+          <h1>Fragrâncias<br/><span>Exclusivas</span></h1>
+          <p class="slide-desc">Descubra os perfumes mais desejados do mundo. Elegância em cada nota.</p>
+          <div class="slide-btns">
+            <a href="#catalogo" class="btn btn-primary" data-filter="perfumes">Ver Perfumes</a>
+            <a href="#catalogo" class="btn btn-outline">Ver Tudo</a>
+          </div>
+        </div>
+      </div>
+      <div class="slide slide-2">
+        <div class="container slide-content">
+          <p class="slide-tag">Estilo & Atitude</p>
+          <h1>Moda que<br/><span>Transforma</span></h1>
+          <p class="slide-desc">Roupas que expressam quem você é. Qualidade e estilo em cada peça.</p>
+          <div class="slide-btns">
+            <a href="#catalogo" class="btn btn-primary" data-filter="roupas">Ver Roupas</a>
+            <a href="#catalogo" class="btn btn-outline">Ver Tudo</a>
+          </div>
+        </div>
+      </div>
+      <div class="slide slide-3">
+        <div class="container slide-content">
+          <p class="slide-tag">Performance & Conforto</p>
+          <h1>Tênis que<br/><span>Inspiram</span></h1>
+          <p class="slide-desc">As melhores marcas de calçados do planeta, agora na palma da sua mão.</p>
+          <div class="slide-btns">
+            <a href="#catalogo" class="btn btn-primary" data-filter="tenis">Ver Tênis</a>
+            <a href="#catalogo" class="btn btn-outline">Ver Tudo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slider-dots" id="sliderDots"></div>
+    <button class="slider-arrow prev" id="slidePrev"><i class="fas fa-chevron-left"></i></button>
+    <button class="slider-arrow next" id="slideNext"><i class="fas fa-chevron-right"></i></button>
+  </section>
+
+  <!-- ========== CATEGORIAS ========== -->
+  <section class="categories section">
+    <div class="container">
+      <div class="categories-grid">
+        <div class="cat-card" data-cat="perfumes" onclick="filterAndScroll('perfumes')">
+          <div class="cat-icon"><i class="fas fa-spray-can-sparkles"></i></div>
+          <h3>Perfumes</h3>
+          <p>Fragrâncias exclusivas</p>
+          <span class="cat-arrow"><i class="fas fa-arrow-right"></i></span>
+        </div>
+        <div class="cat-card cat-card-featured" data-cat="roupas" onclick="filterAndScroll('roupas')">
+          <div class="cat-icon"><i class="fas fa-shirt"></i></div>
+          <h3>Roupas</h3>
+          <p>Moda e estilo</p>
+          <span class="cat-arrow"><i class="fas fa-arrow-right"></i></span>
+        </div>
+        <div class="cat-card" data-cat="tenis" onclick="filterAndScroll('tenis')">
+          <div class="cat-icon"><i class="fas fa-shoe-prints"></i></div>
+          <h3>Tênis</h3>
+          <p>Calçados premium</p>
+          <span class="cat-arrow"><i class="fas fa-arrow-right"></i></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DESTAQUES ========== -->
+  <section class="section" id="destaques">
+    <div class="container">
+      <div class="section-header">
+        <h2>Produtos em <span>Destaque</span></h2>
+        <p>Os produtos mais amados pelos nossos clientes</p>
+      </div>
+      <div class="products-grid" id="featuredGrid">
+        <div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> Carregando...</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BANNER PROMO ========== -->
+  <section class="promo-banner">
+    <div class="container promo-inner">
+      <div class="promo-text">
+        <h2>Frete Grátis<br/>em compras acima de <span>R$299</span></h2>
+        <p>Entrega rápida para todo o Brasil. Parcele em até 12x sem juros.</p>
+        <a href="#catalogo" class="btn btn-light">Aproveitar Agora</a>
+      </div>
+      <div class="promo-badges">
+        <div class="promo-badge"><i class="fas fa-truck"></i><span>Frete Grátis</span></div>
+        <div class="promo-badge"><i class="fas fa-shield-halved"></i><span>Compra Segura</span></div>
+        <div class="promo-badge"><i class="fas fa-rotate-left"></i><span>Troca Fácil</span></div>
+        <div class="promo-badge"><i class="fas fa-credit-card"></i><span>12x Sem Juros</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CATÁLOGO ========== -->
+  <section class="section" id="catalogo">
+    <div class="container">
+      <div class="section-header">
+        <h2>Nosso <span>Catálogo</span></h2>
+        <p>Encontre o produto perfeito para você</p>
+      </div>
+
+      <!-- Filtros e Ordenação -->
+      <div class="catalog-controls">
+        <div class="filter-tabs" id="filterTabs">
+          <button class="filter-tab active" data-filter="todos">Todos</button>
+          <button class="filter-tab" data-filter="perfumes"><i class="fas fa-spray-can-sparkles"></i> Perfumes</button>
+          <button class="filter-tab" data-filter="roupas"><i class="fas fa-shirt"></i> Roupas</button>
+          <button class="filter-tab" data-filter="tenis"><i class="fas fa-shoe-prints"></i> Tênis</button>
+        </div>
+        <div class="sort-control">
+          <select id="sortSelect">
+            <option value="relevancia">Mais Relevantes</option>
+            <option value="menor_preco">Menor Preço</option>
+            <option value="maior_preco">Maior Preço</option>
+            <option value="avaliacao">Melhor Avaliação</option>
+            <option value="nome">Nome A-Z</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="products-grid" id="productsGrid">
+        <div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> Carregando produtos...</div>
+      </div>
+
+      <div class="load-more-wrap" id="loadMoreWrap" style="display:none">
+        <button class="btn btn-outline-dark" id="loadMoreBtn">
+          <i class="fas fa-plus"></i> Carregar Mais Produtos
+        </button>
+      </div>
+
+      <div class="empty-state" id="emptyState" style="display:none">
+        <i class="fas fa-box-open"></i>
+        <h3>Nenhum produto encontrado</h3>
+        <p>Tente outro filtro ou <a href="admin.html">adicione produtos</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== NEWSLETTER ========== -->
+  <section class="newsletter">
+    <div class="container newsletter-inner">
+      <div class="newsletter-text">
+        <h2><i class="fas fa-envelope-open-text"></i> Fique por dentro das novidades!</h2>
+        <p>Cadastre seu e-mail e receba ofertas exclusivas e lançamentos em primeira mão.</p>
+      </div>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" placeholder="Seu melhor e-mail..." required />
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <span class="logo-icon"><i class="fas fa-gem"></i></span>
+          <span class="logo-text">Lux<strong>Store</strong></span>
+        </a>
+        <p>Sua loja de estilo e sofisticação. Perfumes, roupas e tênis das melhores marcas do mundo.</p>
+        <div class="social-links">
+          <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" title="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Categorias</h4>
+        <a href="#" onclick="filterAndScroll('perfumes')">Perfumes</a>
+        <a href="#" onclick="filterAndScroll('roupas')">Roupas</a>
+        <a href="#" onclick="filterAndScroll('tenis')">Tênis</a>
+        <a href="#destaques">Destaques</a>
+      </div>
+      <div class="footer-links">
+        <h4>Informações</h4>
+        <a href="#">Sobre Nós</a>
+        <a href="#">Política de Troca</a>
+        <a href="#">Frete e Entrega</a>
+        <a href="#">Fale Conosco</a>
+      </div>
+      <div class="footer-links">
+        <h4>Formas de Pagamento</h4>
+        <div class="payment-icons">
+          <i class="fab fa-cc-visa"></i>
+          <i class="fab fa-cc-mastercard"></i>
+          <i class="fab fa-cc-amex"></i>
+          <i class="fab fa-pix"></i>
+          <i class="fab fa-cc-paypal"></i>
+        </div>
+        <a href="admin.html" class="btn-admin-link"><i class="fas fa-cog"></i> Painel Admin</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 LuxStore. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== MODAL PRODUTO ========== -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box" id="modalBox">
+      <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- ========== CARRINHO LATERAL ========== -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3><i class="fas fa-shopping-bag"></i> Meu Carrinho</h3>
+      <button id="cartClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer" id="cartFooter"></div>
+  </aside>
+
+  <!-- ========== TOAST ========== -->
+  <div class="toast" id="toast"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
